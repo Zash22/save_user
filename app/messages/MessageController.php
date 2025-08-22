@@ -15,6 +15,6 @@ class MessageController
     public function index(): void
     {
         $messages = $this->messageModel->all();
-        print_r($messages);
+        require __DIR__ . '/MessageView.php';
     }
 }
