@@ -32,4 +32,21 @@ class Message
         ");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function create(array $data): bool
+    {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO messages (user_id, name, email, phone, message, query_type, status)
+            VALUES (:user_id, :name, :email, :phone, :message, :query_type, 'open')
+        ");
+
+        return $stmt->execute([
+            ':user_id'    => $data['user_id'],
+            ':name'       => $data['name'],
+            ':email'      => $data['email'],
+            ':phone'      => $data['phone'],
+            ':message'    => $data['message'],
+            ':query_type' => $data['query_type'],
+        ]);
+    }
 }
