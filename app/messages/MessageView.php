@@ -35,7 +35,7 @@
                         <tr>
                             <td><?= htmlspecialchars($m['name']) ?></td>
                             <td><?= htmlspecialchars($m['email']) ?></td>
-                            <td><?= htmlspecialchars($m['phone']) ?></td>
+                            <td><?= htmlspecialchars(str_starts_with($m['phone'], '+27') ? $m['phone'] : '+27'.ltrim($m['phone'], '0')) ?></td>
                             <td><?= htmlspecialchars($m['query_type']) ?></td>
                             <td><?= nl2br(htmlspecialchars($m['message'])) ?></td>
                             <td><?= htmlspecialchars($m['status']) ?></td>
